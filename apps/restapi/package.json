@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/app.ts",
+    "start": "ts-node src/index.ts",
+    "build": "tsc && tsc-alias",
+    "lint": "eslint --ext .ts,.tsx src",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,11 +17,19 @@
   "devDependencies": {
     "@ocmo/eslint-config": "workspace:*",
     "@ocmo/typescript-config": "workspace:*",
+    "@types/express": "^5.0.2",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.15.18",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "lodash": "^4.17.21",
+    "lowdb": "^7.0.1",
+    "uuid": "^11.1.0"
   }
 }

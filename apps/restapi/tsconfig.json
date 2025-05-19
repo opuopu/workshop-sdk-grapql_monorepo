@@ -1,14 +1,20 @@
 {
-  "extends": "../../packages/typescript-config/nextjs.json",
+  "extends": "@ocmo/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "../",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "db/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist",
