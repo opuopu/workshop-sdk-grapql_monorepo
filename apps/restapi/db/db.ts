@@ -40,8 +40,15 @@ const defaultData: Data = {
   accounts: [],
   transactions: [],
 };
-const adapter = new JSONFile<Data>("db.json");
+const adapter = new JSONFile<Data>(_);
 const db = new LowWithLodash(adapter, defaultData);
-db.read();
+
+async function initDb() {
+  await db.read();
+  db.data ||= { users: [], accounts: [], transactions: [] };
+  await db.write();
+}
+
+initDb();
 
 export { db };

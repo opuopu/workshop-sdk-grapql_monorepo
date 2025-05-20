@@ -4,7 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "jest",
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "typescript": "^5.2.2",
+    "rimraf": "^5.0.0",
+    "@ocmo/typescript-config": "workspace:*",
+    "@ocmo/eslint-config": "workspace:*"
   },
   "keywords": [],
   "author": "",
