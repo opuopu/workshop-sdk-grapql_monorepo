@@ -1,3 +1,5 @@
+import { user } from "../entities/user.entity";
+
 export type createUserDTO = {
   name: string;
   email: string;
@@ -9,9 +11,19 @@ export class createNewUserCase {
   constructor(private userRepository: any) {} // TODO: Replace 'any' with the actual type of your user repository
 
   //   Execute
-  execute(dto: createUserDTO): void {
+  async execute(dto: createUserDTO): Promise<user> {
     this.validate(dto);
     // TODO: Implement check if user already exists
+    const password = `hashed_${dto.password}`; // TODO: Implement password hashing
+    const ifUserExists = this.userRepository.findAuser(dto.email);
+
+    if (ifUserExists) {
+      throw new Error("User already exists");
+    }
+
+    dto.password = password;
+    const createUser = this.userRepository.createUser(dto);
+    return createUser;
   }
 
   validate(dto: createUserDTO): void {
