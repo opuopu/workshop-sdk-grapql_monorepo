@@ -1,6 +1,13 @@
 import express, { Request, Response } from "express";
-import { v4 as uuidv4 } from "uuid";
+import { InMemoryUserRepository } from "../../../packages/core/adapters";
+import { createNewUserCase } from "../../../packages/core/use_cases/create-user";
 import { db, type User } from "../db/db";
+
+// Initialize the in-memory user repository
+const userRepository = new InMemoryUserRepository();
+
+// Use case instance
+const createUserCase = new createNewUserCase(userRepository);
 
 const app: import("express").Express = express();
 const port = 3000;
@@ -21,30 +28,15 @@ app.post(
           .json({ error: "Name, email, and password are required." });
       }
 
-      // Check if user already exists
-      //   await db.read();
-      const existingUser = db.data?.users.find((u: User) => u.email === email);
-      if (existingUser) {
-        return res.status(409).json({ error: "User already exists." });
-      }
-
-      // Mock password hashing
-      const hashedPassword = `mock_hashed_${password}`;
-
-      const newUser: User = {
-        id: uuidv4(),
-        name,
-        email,
-        password: hashedPassword,
-      };
-
-      db.data?.users.push(newUser);
-      await db.write();
-
+      // Use the use case to create a user
+      const newUser = await createUserCase.execute({ name, email, password });
       res
         .status(201)
         .json({ id: newUser.id, name: newUser.name, email: newUser.email });
-    } catch (err) {
+    } catch (err: any) {
+      if (err.message === "User already exists") {
+        return res.status(409).json({ error: err.message });
+      }
       console.log(err);
       res.status(500).json({ error: "Internal Server Error" });
     }

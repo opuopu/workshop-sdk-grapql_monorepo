@@ -2,18 +2,27 @@
   "extends": "@ocmo/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "../",
-    "baseUrl": ".",
+    "rootDir": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@core/*": ["./*"],
+      "@adapters/*": ["adapters/*"],
+      "@entities/*": ["entities/*"],
+      "@repositories/*": ["repositories/*"],
+      "@use_cases/*": ["use_cases/*"],
+      "@lib/*": ["lib/*"],
+      "@clients/*": ["clients/*"],
+      "@database/*": ["database/*"]
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "db/**/*.ts"
+    "adapters/**/*.ts",
+    "entities/**/*.ts",
+    "repositories/**/*.ts",
+    "use_cases/**/*.ts",
+    "lib/**/*.ts",
+    "clients/**/*.ts",
+    "database/**/*.ts"
   ],
   "exclude": [
     "node_modules",

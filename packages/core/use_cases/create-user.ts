@@ -1,4 +1,4 @@
-import { user } from "../entities/user.entity";
+import { user } from "../entities/index.js";
 
 export type createUserDTO = {
   name: string;

@@ -15,6 +15,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@ocmo/core": "workspace:*",
+    "@ocmo/database": "workspace:*",
+    "@ocmo/express": "workspace:*",
     "@ocmo/eslint-config": "workspace:*",
     "@ocmo/typescript-config": "workspace:*",
     "@types/express": "^5.0.2",

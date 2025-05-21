@@ -1,0 +1,45 @@
+{
+  "name": "@ocpm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    },
+    "./use-cases/*": {
+      "types": "./dist/use-cases/*.d.ts",
+      "require": "./dist/use-cases/*.js"
+    },
+    "./repositories/*": {
+      "types": "./dist/repositories/*.d.ts",
+      "require": "./dist/repositories/*.js"
+    },
+    "./entities/*": {
+      "types": "./dist/entities/*.d.ts",
+      "require": "./dist/entities/*.js"
+    },
+    "./libs/*": {
+      "types": "./dist/libs/*.d.ts",
+      "require": "./dist/libs/*.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "jest",
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "typescript": "^5.2.2",
+    "rimraf": "^5.0.0",
+    "@ocmo/typescript-config": "workspace:*",
+    "@ocmo/eslint-config": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

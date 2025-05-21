@@ -82,6 +82,24 @@ importers:
         specifier: ^5.2.2
         version: 5.8.3
 
+  packages/database:
+    devDependencies:
+      '@ocmo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@ocmo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/node':
+        specifier: ^22.15.18
+        version: 22.15.18
+      rimraf:
+        specifier: ^5.0.0
+        version: 5.0.10
+      typescript:
+        specifier: ^5.2.2
+        version: 5.8.3
+
   packages/eslint-config:
     devDependencies:
       '@eslint/js':
